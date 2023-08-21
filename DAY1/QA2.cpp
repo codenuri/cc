@@ -35,6 +35,7 @@ public:
 	// "override" 키워드 사용하지 말아 보세요
 	// => 당연히, override 를 적으면 좋습니다. "에러를 즉시 알수있으므로"
 	// 아래 인자의 의미는 : "arg 가 const 가 아니라 arg를 따라가면 const" 라는 의미
+	// => 즉, 아래 코드는 Base foo 를 재정의 한것이아닌, 새로운 함수.. 
 	/*
 	virtual void foo(const int* arg)
 	{
