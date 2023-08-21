@@ -19,8 +19,16 @@ public:
 											// 상수 객체는 "이동 될수 없다" 라는 특징
 											 
 	// 핵심 : 인자를 retain 하는 함수의 경우는 "2개"를 만드는 것이 좋습니다.
-	void set_name(const std::string& n) { name = n; }
-	void set_name(std::string&& n)      { name = std::move(n); }
+	void set_name(const std::string& n)
+	{ 
+		std::cout << "const std::string&" << std::endl;
+		name = n; 
+	}	
+	void set_name(std::string&& n)      
+	{ 
+		std::cout << "string&&" << std::endl;
+		name = std::move(n); 
+	}
 };
 
 int main()
@@ -36,6 +44,11 @@ int main()
 	p.set_name(std::move(s2));	// s의 자원을 이동해 가라는 의도
 								// 즉, s는 자원 손실하고 더 이상 사용할수 없다
 								// 메모리 복사가 없으므로 빠르다.
-	std::cout << s1 << std::endl;
-	std::cout << s2 << std::endl;
+	std::cout << s1 << std::endl; // 문자열 자원 있음..
+	std::cout << s2 << std::endl; // 문자열 자원 없음..
+
+	p.set_name("lee");  // string literal 을 직접 전달
+						// 1. string literal 을 사용해서 string 의 임시객체 생성
+						// 2. 임시객체는 rvalue 이므로 std::string&& 버전 사용
+						// 3. 임시객체의 자원을 name 으로 move
 }
