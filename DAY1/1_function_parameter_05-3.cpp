@@ -2,8 +2,8 @@
 #include <vector>
 #include <span> // C++20.  g++ 소스.cpp -std=c++20
 
-// std::string_view : "문자(char)"타입의 연속된 메모리에 대한 "view"
-// std::span	    : "임의타입(T)"의    연속된 메모리에 대한 "view"
+// std::string_view : "문자(char)"타입의 연속된 메모리에 대한 "view" - C++17
+// std::span	    : "임의타입(T)"의    연속된 메모리에 대한 "view" - C++20
 
 // vector 
 // 인자로 전달된 vector 를 읽기만 하려고 합니다.
