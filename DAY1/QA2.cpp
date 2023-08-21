@@ -12,7 +12,8 @@ template<typename T>
 class Base
 {
 public:
-	void foo(const T arg)
+	// 아래 인자의 의미는 : "arg 가 const" 라는 의미 입니다.
+	virtual void foo(const T arg)
 	{
 		std::cout << "Base foo" << std::endl;
 	}
@@ -22,6 +23,10 @@ class Derived : public Base<int*>
 public:
 	// foo override 해서, "Derived foo" 로 변경해 보세요
 	// "override" 키워드 사용하지 말아 보세요
+	virtual void foo(const int* arg)
+	{
+		std::cout << "Derived foo" << std::endl;
+	}
 };
 
 int main()
