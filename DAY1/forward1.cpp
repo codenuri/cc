@@ -34,8 +34,8 @@ void foo(const Point& p) {}
 
 // T&& 인자의 의도 : Point&, Point&& 버전의 함수를 자동생성하겠다는 의도
 
-// foo(pt) 로 사용하면, pt는 lvalue 이므로 : T = Point&, T&& = Point& && => Point&
-// foo(Point(1,2))는        rvalue 이므로 : T = Point,  T&& = Point&&
+// foo(pt) 로 사용하면, pt는 lvalue 이므로 : T = Point&, T&& = Point& && => Point&, foo(Point&) 함수 생성
+// foo(Point(1,2))는        rvalue 이므로 : T = Point,  T&& = Point&&			  foo(Point&&) 함수 생성
 
 template<typename T>
 void foo(T&& p)
