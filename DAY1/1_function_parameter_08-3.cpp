@@ -35,7 +35,16 @@ void forward_argument(F f, int&& arg)
 template<typename F, typename T>
 void forward_argument(F f, T&& arg)
 {
-	f(static_cast<T&&>(arg));
+	// 아래 캐스팅은 arg 를 항상 "rvalue"로 캐스팅하는 코드 이다 -> X
+
+	// forward_argument 의 2번째 인자로
+	// rvalue 를 (보내면 arg로 받으면서 lvalue 로 변경된것을 다시) rvalue 로 캐스팅
+	// lvalue 를 (보내면 arg로 받으면서 lvalue 로 변경된것을 계속) lvalue 로 캐스팅
+	// f(static_cast<T&&>(arg));
+
+	// 위와 같은 캐스팅을 하는 C++ 표준 함수가 "std::forward" 입니다.
+	f( std::forward<T>(arg) ); // 위와 동일
+							   // 단, T&& 가 아닌 T 를 전달하면 됩니다.
 }
 
 int main()
@@ -44,8 +53,15 @@ int main()
 
 	// 아래 2줄을 컴파일 할때 컴파일러가 생성하는 함수의 모양을 "정확히"
 	// 예측할수 있어야 합니다.
-	forward_argument(f1, 10);
-	forward_argument(f2, n);
+	forward_argument(f1, 10); // 10 은 rvalue
+							  // T=int, T&&=int&&
+							  // => 함수 모양 : forward_argument(F f, int&& arg) 
+							  // => 캐스팅모양: static_cast<int&&>(arg)
+
+	forward_argument(f2, n);  // n 은 lvalue
+							  // T=int&, T&&=int& && => int& 
+							  // => 함수 모양 : forward_argument(F f, int& arg)
+							  // => 캐스팅모양: static_cast<int&>(arg)
 
 }
 
