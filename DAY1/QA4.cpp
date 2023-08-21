@@ -23,10 +23,19 @@ public:
 	Object(Object&&)      { std::cout << "move" << std::endl; }
 };
 
+// C++ 표준의 move를 만들어 봅시다.
+template<typename T>
+T&& move(T& obj)
+{
+	return static_cast<T&&>(obj);
+}
+
 int main()
 {
 	Object o1;
 	Object o2 = o1;				// 복사 생성자 호출
 //	Object o3 = std::move(o1);	// 이동 생성자 호출
-	Object o3 = static_cast<Object&&>(o1); // 결국 이코드가 위와 동일한 코드입니다.
+//	Object o3 = static_cast<Object&&>(o1); // 결국 이코드가 위와 동일한 코드입니다.
+
+	Object o3 = move(o1);
 }
