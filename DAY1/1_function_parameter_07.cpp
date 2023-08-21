@@ -52,3 +52,9 @@ int main()
 						// 2. 임시객체는 rvalue 이므로 std::string&& 버전 사용
 						// 3. 임시객체의 자원을 name 으로 move
 }
+
+// string literal의 경우도 r-value라서 항상 아래쪽으로 가나요 ?
+// => string literal 은 "rvalue" 아닙니다. "lvalue" 입니다. 
+//    정수, 실수 리터럴등은  rvalue 이지만, 문자열은 lvalue 입니다.
+// 
+// => string literal 로 만들어진 임시객체가 rvalue 입니다.
