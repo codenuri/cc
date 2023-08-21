@@ -27,13 +27,15 @@ int main()
 {
 	Person p;
 
-	std::string s = "to be or not to be";
+	std::string s1 = "to be or not to be";
+	std::string s2 = "to be or not to be";
 
-	p.set_name(s);		// s의 문자열을 복사해 가라는 의도
+	p.set_name(s1);		// s의 문자열을 복사해 가라는 의도
 						// s는 계속 사용가능
 
-	p.set_name(std::move(s));	// s의 자원을 이동해 가라는 의도
+	p.set_name(std::move(s2));	// s의 자원을 이동해 가라는 의도
 								// 즉, s는 자원 손실하고 더 이상 사용할수 없다
 								// 메모리 복사가 없으므로 빠르다.
-
+	std::cout << s1 << std::endl;
+	std::cout << s2 << std::endl;
 }
