@@ -28,7 +28,10 @@ void forward_argument(F f, int&& arg)
 	// "10"은 rvalue 지만 "arg" 는 lvalue 입니다.
 //	f(arg); // 그래서 이코드가 f3(int&) 를 찾게 됩니다.
 
-	f(static_cast<int&&>(arg));
+	f(static_cast<int&&>(arg)); // lvalue 인 arg 를 rvalue 로 캐스팅 하는 코드
+						// int&& 인 arg를 다시 int&& 타입으로 캐스팅 하는 것이 아닙니다.
+						// C++ 문법에 static_cast<&&> 는 타입 캐스팅이 아닌 value 캐스팅 입니다.
+						// 그래서, lvalue => rvalue 캐스팅 입니다.
 }
 
 int main()
