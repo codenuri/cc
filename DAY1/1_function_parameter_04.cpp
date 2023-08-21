@@ -2,7 +2,7 @@
 // 인자를 읽기만(in parameter) 한다면
 
 // 1. user define type 의 경우
-// => 대부분 const reference 가 좋습니다 
+// => "대부분" const reference 가 좋습니다 
 // => void foo(const Rect& rc)
 
 // 2. primitive type(int,double, char 등) 의 경우
