@@ -28,9 +28,14 @@ public:
 	void set_data(const std::array<int, 32>& d)
 	{
 		// 아래 코드는 분명히 멤버에 보관(retain) 하지만
-		// const std::array 는 move 효과 없습니다.
-		// move 버전 의 setter 를 지원할 필요 없습니다.
+		// const std::array 는 move 효과 없습니다.		
 		data = d;
+	}
+	// move 버전 의 setter 를 지원할 필요 없습니다.
+	// 아래 코드는 만드지 마세요
+	void set_data(std::array<int, 32>&& d)
+	{
+		data = std::move(d);
 	}
 };
 
