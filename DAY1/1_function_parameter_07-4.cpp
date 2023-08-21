@@ -10,11 +10,26 @@ public:
 	// move 를 지원하는 setter 만들기
 
 	// 방법 1. 동일한 이름의 2개의 함수 제공
-	void set_name(const std::string& n) { name = n;	}
-	void set_name(std::string&& n)      { name = std::move(n); }
+//	void set_name(const std::string& n) { name = n;	}
+//	void set_name(std::string&& n)      { name = std::move(n); }
 
+	
+	// 방법 2. T&& 를 사용하면 위 2개 버전을 자동 생성가능합니다.
+	template<typename T>
+	void set_name(T&& n)
+	{
+		// 다음중 맞는 것을 찾으세요
+		name = n;					// 1
+		name = std::move(n);		// 2
+		name = std::forword<T>(n);	// 3
+	}
 
 };
+
+
+
+
+
 
 int main()
 {
