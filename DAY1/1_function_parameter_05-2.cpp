@@ -6,14 +6,15 @@
 void* operator new(std::size_t sz)
 {
 	printf("new : %d\n", sz);
-
 	return malloc(sz);
 }
 
 void good(const std::string& s)
 {
 }
-
+// string_view : 크기가 작고, 복사 생성자가 하는일이 없습니다.
+// => 복사의 오버헤드가 거의 없습니다.
+// => primitive 타입 처럼 call by value 가 좋습니다.
 void best(std::string_view s)
 {
 }
