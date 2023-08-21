@@ -25,13 +25,15 @@ int main()
 	std::string s = "to be or not to be";
 
 	// 아래의 경우는 "const string&" 도 나쁘지 않습니다
-	good(s);
-	best(s);
+//	good(s);
+//	best(s);
 
 	// 그런데, 아래 코드를 생각해 보세요
-//	good("to be or not to be"); // 이순간 std::string 의 임시객체를 생성하게됩니다.
+	std::cout << "==================" << std::endl;
+
+	good("to be or not to be"); // 이순간 std::string 의 임시객체를 생성하게됩니다.
 								// string 의 생성자가 "문자열을 힙에 복사"하게 됩니다.
 								// 임시객체를 good() 에서 참조로 받게 됩니다.
-	best("to be or not to be"); // 임시객체 없습니다.
+//	best("to be or not to be"); // 임시객체 없습니다.
 								// string_view 가 상수 메모리의 문자열을 직접 가르키게 됩니다.
 }
