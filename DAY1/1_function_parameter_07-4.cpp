@@ -10,16 +10,10 @@ public:
 	// move 를 지원하는 setter 만들기
 
 	// 방법 1. 동일한 이름의 2개의 함수 제공
-	void set_name(const std::string& n)
-	{
-		std::cout << "const std::string&" << std::endl;
-		name = n;
-	}
-	void set_name(std::string&& n)
-	{
-		std::cout << "string&&" << std::endl;
-		name = std::move(n);
-	}
+	void set_name(const std::string& n) { name = n;	}
+	void set_name(std::string&& n)      { name = std::move(n); }
+
+
 };
 
 int main()
