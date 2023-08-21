@@ -9,6 +9,9 @@
 // => 즉, 포인터 정도로 생각하면 됩니다.
 // "call by value"
 
+// 항상 표준 라이브러리(STL) 은 인자를 어떻게 받을까 를 참고 하세요
+// => cppreference.com 에서 std::find() 찾아 보세요
+
 template<typename T>
 auto sum(T first, T last) 
 {
