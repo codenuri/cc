@@ -56,7 +56,7 @@ int main()
 
 	//	p.set(s1, s2);
 	//	p.set(std::move(s1), std::move(s2));
-	p.set(std::move(s1), s2);
+	//  p.set(std::move(s1), s2);
 
 	// C++ 표준의 pair 를 생각해 봅시다.
 	// 아래 코드를 지원하기 위해서 생성자를 어떻게 했을지 생각해보세요
