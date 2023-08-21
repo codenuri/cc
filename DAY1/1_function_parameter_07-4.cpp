@@ -19,16 +19,14 @@ public:
 	void set_name(T&& n)
 	{
 		// 다음중 맞는 것을 찾으세요
-		name = n;					// 1
-		name = std::move(n);		// 2
-		name = std::forword<T>(n);	// 3
+	//	name = n;					// 1. 항상 복사 생성자 사용
+	//	name = std::move(n);		// 2. 항상 이동 생성자 호출
+		name = std::forword<T>(n);	// 3. set_name() 인자로 lvalue 를 보냈는지
+									//						rvalue 를 보냈는지에 따라
+									//					다른 캐스팅!!!
+									// ==> 정답!!
 	}
-
 };
-
-
-
-
 
 
 int main()
