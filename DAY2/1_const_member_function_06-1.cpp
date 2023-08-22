@@ -14,9 +14,19 @@ public:
 	// => 핵심 : const 키워드가 함수 () 뒤가 아닌, 함수 인자로 놓이게 됩니다.
 	void f2(this Test&       self) {}
 	void f2(this const Test& self) {}
+
+	// 핵심 : const 가 인자에 포함되게 되었습니다.
+	// => template 을 사용하면 위 2개 함수가 자동 생성됩니다
+	template<typename T>
+	void f3(this T& self) {}
 };
 
 int main()
 {
+	Test t;
+	const Test ct;
+
+	t.f3();		// f3(this Test&)       즉, f3() 생성
+	ct.f3();    // f3(this const Test&) 즉, f3() const 생성
 
 }
