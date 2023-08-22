@@ -19,7 +19,8 @@ public:
 	template<typename T>
 	decltype(auto) operator[](this T& self, int idx)
 	{
-		return self->buff[idx];
+		return self->buff[idx]; // self 가 const 라면   : const T& 반환
+								// self 가 const 아니면 : T& 반환
 	}
 };
 
