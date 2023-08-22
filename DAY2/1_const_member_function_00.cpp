@@ -28,9 +28,16 @@ int main()
 //	let mut n2 = 0; // R/W
 }
 
+// constexpr 과 전처리기 매크로(? ) 차이는 무엇인가요 ? ?
+// constexpr : 컴파일러가 처리
+// 매크로     : 전처리가 처리
 
+constexpr int MAX1 = 10;
+#define MAX2 10
 
-
+// MAX 관련 컴파일 에러 발생시
+// MAX1 : 에러창에 "MAX1" 이라고 출력
+// MAX2 : 에러창에 "10"   이라고 출력
 
 
 
