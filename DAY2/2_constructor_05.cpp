@@ -32,7 +32,7 @@ class Rect
 	Point ptFrom{ 0, 0 };
 	Point ptTo{ 0, 0 };
 
-//	Point ptTo(0, 0); //error. ()로 하지 말고, {}로 하세요
+//	Point ptTo(0, 0); //error. () 로 하지 말고, {}로 하세요
 public:
 };
 
