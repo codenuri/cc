@@ -7,8 +7,11 @@ class Point
 	int x;
 	int y;
 
-	std::string cache;
-	bool cache_valid = false;
+	// mutable 멤버 데이타 : const 멤버 함수 안에서도
+	//						값을 변경할수 있는 멤버데이타를 만들때사용
+	//						반드시 필요한 경우가 있게 됩니다!!!
+	mutable std::string cache;
+	mutable bool cache_valid = false;
 public:
 	Point(int a = 0, int b = 0) : x(a), y(b) {}
 
@@ -23,6 +26,7 @@ public:
 		}
 		return cache;
 	}
+	// x, y 가 변경되면 cache_valid 를 false 로 변경!!
 };
 
 int main()
