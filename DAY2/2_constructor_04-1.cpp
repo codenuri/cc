@@ -26,7 +26,8 @@ public:
 class PipeStream : public Stream
 {
 public:
-	PipeStream() {}
+	PipeStream() {}	// PipeStream() : Stream() {} <= 컴파일러가 이렇게 변경했는데
+												// Stream 에 디폴트생성자가 없다
 };
 
 
