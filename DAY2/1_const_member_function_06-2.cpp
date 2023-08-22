@@ -36,3 +36,33 @@ int main()
 	n1 = v1[0];	// O			
 	n1 = v2[0];	// O			
 }
+
+// C++ 
+class Test
+{
+public:
+	void f1()
+	{
+		// 멤버 데이타를 R/W 가능한 함수
+	}
+	void f2() const
+	{
+		// 멤버 데이타를 R 만 가능한함수
+	}
+};
+// const 멤버 함수가 더 많이 사용되는데
+// C++은 디폴트가 non-const 이고, 필요할때 const 를 붙여야 합니다.
+
+// swift : 모든 멤버 함수는 기본적으로 const 멤버 함수
+//		   R/W 하고 싶으면 mut 키워드사용
+class Test
+{
+	public void f1()
+	{
+		// 멤버 데이타를 R 가능한 함수
+	}
+	public void f2() mutable
+	{
+		// 멤버 데이타를 R/W 만 가능한함수
+	}
+};
