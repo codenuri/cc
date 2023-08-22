@@ -2,6 +2,10 @@
 #include <string>
 #include <sstream>
 
+// const member function 은 "필수" 입니다.
+// 그런데, const member function 를 사용하기 시작하면
+// => 알아야 되는게 아주 많아집니다.!!!
+
 class Point
 {
 	int x;
