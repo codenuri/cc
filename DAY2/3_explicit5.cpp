@@ -16,8 +16,9 @@ int main()
 		// 입력 실패
 	}
 
-	if (std::cin) // 방법 2. std::cin 자체를 if 로 조사 가능
-	{
+	if (std::cin)	// 방법 2. std::cin 자체를 if 로 조사 가능
+	{				// C++98 : cin.operator void*() 를 사용해서 포인터로 변환
+					// C++11 : cin.operator bool() 을 사용해서 bool 로 변환되는것
 		// 입력 성공
 	}
 
