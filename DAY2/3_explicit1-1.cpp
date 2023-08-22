@@ -15,4 +15,8 @@ int main()
 	// string 의 생성자는 explicit 가 아닙니다.
 	std::string s1("hello");  // ok
 	std::string s2 = "hello"; // ok
+
+	// vector(int) 생성자는 explicit 라는 의미
+	std::vector<int> v1(10);	// ok
+	std::vector<int> v2 = 10;	// error.
 }
