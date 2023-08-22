@@ -20,3 +20,4 @@ int main()
 	std::vector<int> v1(10);	// ok
 	std::vector<int> v2 = 10;	// error.
 }
+// explicit1-1 ют╢о╢ы.
