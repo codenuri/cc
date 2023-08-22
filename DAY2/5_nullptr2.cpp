@@ -1,10 +1,10 @@
 #include <iostream>
 
-template<typename F, typename ARG>
-void chronometry(F f, ARG&& arg)
-{
-	f( std::forward<T>(arg) );
-}
+template<typename F, typename T>
+void chronometry(F f, T&& arg)  // int&& arg = 0  핵심 arg는 int 타입
+{								// 
+	f( std::forward<T>(arg) );  // foo(arg) 의 의미 인데 arg는 int 이므로 
+}								//			error. 
 
 void foo(int* p) {}
 
