@@ -20,7 +20,6 @@ int main()
 	//         아래 처럼 4가지 형태로 객체 생성이 가능합니다.
 	Vector v1(10);		// C++98 스타일, direct initialization
 	Vector v2 = 10;		// C++98 스타일, copy   initialization
-
 	Vector v3{ 10 };	// C++11 스타일, direct initialization
 	Vector v4 = { 10 }; // C++11 스타일, copy   initialization
 
