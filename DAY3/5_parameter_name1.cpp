@@ -18,6 +18,10 @@ int shared_data = 0;
 // 핵심 1. 자원 관리는 직접 하는 것은 좋지 않습니다.
 //      2. 항상 RAII 기술로 자원을 관리하세요
 
+// RAII : Resource Acquision Is Initialization
+// => 자원을 획득하는 것(m.lock) 은 (자원관리 객체(lock_guard)가) 초기화 될때이다
+// => 자원의 acquire/release 를 "생성자/소멸자"로 하라는 의미
+
 // 2개 이상의 스레드가 아래 foo함수를 실행.. 
 void foo()
 {
