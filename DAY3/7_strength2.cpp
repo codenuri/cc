@@ -21,6 +21,12 @@ int main()
 	// 아래 처럼 받는 ret3은 안전할까요 ?
 	const std::string& ret3 = max1(std::string("AAA"),
 								   std::string("BBB"));
+
+	// 여기서 ret3을 사용해도 될까요 ?
+	// => 절대 사용하면 안됩니다
+	// => 임시객체는 "최초의 const &" 에 의해서만 수명 연장이 됩니다.
+	// cppreference.com 에서 "std::max" 찾아 보세요. 
+	// => 함수 모양(인자, 반환타입) 보고, 중간쯤에 Note 보세요
 }
 
 
