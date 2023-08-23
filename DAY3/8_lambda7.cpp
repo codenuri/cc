@@ -20,13 +20,10 @@ public:
 	operator F() { return &CompilerGeneratedName::helper; }
 };
 
-
 int main()
 {
 	int(*f1)(int, int) = CompilerGeneratedName();
 						// 임시객체.operator 함수포인터타입()
-
-
 
 
 	// 람다 표현식은 함수 포인터에 담아도 됩니다.
@@ -34,5 +31,24 @@ int main()
 						// class xxx{}; xxx(); 
 						// 임시객체
 
-
+	// 핵심 : 캡쳐한 람다표현식은 함수포인터로 변환될수 없습니다.
+	int k = 10;
+	int(*f2)(int, int) = [k](int a, int b) { return a + b + k; }; // error
 }
+
+class CompilerGeneratedName2
+{
+	int k;
+public:
+	CompilerGeneratedName2(int n) : k(n) {}
+
+	auto operator()(int a, int b) const { return a + b + k; }
+
+	using F = int(*)(int, int);
+
+	// 함수 포인터로의 변환을 위한 static 함수에서 멤버데이타 k접근 안됩니다.
+	// 이 문제 때문에, 캡쳐한 람다표현식은 함수 포인터 변환이 안됩니다.
+	static auto helper(int a, int b) { return a + b + k; }
+
+	operator F() { return &CompilerGeneratedName::helper; }
+};
