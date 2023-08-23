@@ -13,6 +13,10 @@
 // trivial 복사 생성자 : 모든 멤버를 얕은 복사하는 복사 생성자.
 // trivial 소멸자     : 아무일도 하지 않은 소멸자!
 
+
+// 생성자가 "trivial(자명)" 하다는 것은 
+// => 생성자가 하는 일이 없을때를 의미 합니다.
+
 class A
 {
 };
@@ -25,8 +29,10 @@ public:
 	virtual void foo() {}
 };
 
-
 int main()
 {
+	// 생성자 호출 없이 객체 생성
+	B* p = static_cast<B*>(operator new(sizeof(B)));
 
+	p->foo();
 }
