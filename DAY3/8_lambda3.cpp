@@ -27,4 +27,11 @@ int main()
 	Add add; // 결국 add 라는 함수 입니다.
 
 	int n = add(1, 2);
+
+	// 함수 객체를 편하게 만들려면 람다 표현식 사용하세요
+	auto add2 = [](int a, int b) { return a + b; }; 
+				// class xxx{ operator()(....){}}; xxx();
+				// 즉, 위 add1 과 완벽히 동일
+
+	int n1 = add2(1, 2);
 }
