@@ -6,6 +6,7 @@
 // 모든 special member function 이 trivial 하면
 // => trivial type 이라고 합니다.
 // => 모든 primitive type(int, double, char등) 은 trivial type 입니다.
+// => C 언어의 구조체가 trivial type 입니다.
 
 
 class Point
