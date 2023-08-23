@@ -32,5 +32,19 @@ int main()
 	//==================================================
 	// 람다 표현식은 "함수객체를 만들고 임시객체를 생성" 하는 표기법입니다.
 
-	auto ret4 = std::find_if(v.begin(), v.end(), [](int n) { return n % k == 0; });
+	auto ret4 = std::find_if(v.begin(), v.end(), [k](int n) { return n % k == 0; });
+
+	// 위 한줄은 컴파일러에 의해서 아래 처럼 변경됩니다.
+
+	struct CompilerGeneratedName
+	{
+		int k;
+
+		CompilerGeneratedName(int n) : k(n) {}
+
+		auto operator()(int n) { return n % k == 0; }
+	};
+	auto ret4 = std::find_if(v.begin(), v.end(), CompilerGeneratedName(k));
+	//--------------------------------------------------------------------------
+
 }
