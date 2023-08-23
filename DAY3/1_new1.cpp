@@ -24,6 +24,14 @@ int main()
 	Point* p1 = static_cast<Point*>( operator new(sizeof(Point)));
 
 
+	// 2. 이미 할당된 메모리 공간에 생성자 호출(객체생성한다고 표현)
+	new(p1) Point(1,2);
+
+
+	// 3. 메모리 해지 없이 소멸자만 호출
+	p1->~Point();
+
+
 	// 4. 메모리만 해지(소멸자호출없이) - free 와 유사
 	operator delete(p1);
 
