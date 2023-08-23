@@ -22,17 +22,31 @@ class A
 };
 
 // B의 생성자는 trivial 할까요 ?
-class B 
+class B //: public A
 {
 	int data;
+//	A member;
 public:
-	virtual void foo() {}
+//	virtual void foo() {}
 };
+// 생성자가 trivial 하려면
+// 1. 사용자가 만든 생성자가 없고
+// 2. 가상함수가 없고
+// 3. 기반 클래스가 없거나, 기반 클래스의 생성자가 trivial 하고
+// 4. 객체형 멤버가 없거나, 객체형 멤버의 생성자가 trivial 
+// 할때... 생성자는 trivial 합니다.
+
+
+
 
 int main()
 {
 	// 생성자 호출 없이 객체 생성
 	B* p = static_cast<B*>(operator new(sizeof(B)));
 
+	new(p) B; // 생성자 호출.
+
 	p->foo();
+
+	std::cout << "finish main" << std::endl;
 }
