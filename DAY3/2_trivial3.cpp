@@ -1,5 +1,13 @@
 #include <iostream>
 
+// trivial 여부는 "각각의 special member function" 별로 다릅니다.
+// 생성자는 trivial 하지 않지만 복사 생성자는 trivial 할수 있습니다.
+
+// 모든 special member function 이 trivial 하면
+// => trivial type 이라고 합니다.
+// => 모든 primitive type(int, double, char등) 은 trivial type 입니다.
+
+
 class Point
 {
 	int x;
