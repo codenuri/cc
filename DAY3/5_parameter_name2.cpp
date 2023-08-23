@@ -27,7 +27,9 @@ void foo()
 	{
 		// 다른 방법으로 lock 을 했지만, 
 		// unlock 은 lock_guard 를 사용해서 안전하게 하고 싶다.
-		lock_guard<std::mutex> g(m);
+		lock_guard<std::mutex> g(m);// 생성자에서 다시 m.lock()하게된다.
+									// 결국, lock() 을 하지 않은 생성자도 필요
+
 
 		shared_data = 100;
 
