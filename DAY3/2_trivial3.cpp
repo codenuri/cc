@@ -47,11 +47,20 @@ public:
 		operator delete(buff);
 		size = 0;
 	}
+
+	// vector 의 복사 생성자를 생각해 봅시다 - 많은 기법이 등장합니다.
+	vector(const vector& other) : size(other.size)
+	{
+
+	}
+
 };
 
 int main()
 {
 	Point pt(0, 0);
-	vector<Point> v(10, pt);
+	vector<Point> v1(10, pt);
+
+	vector<Point> v2 = v1; // 이 한줄을 생각해 봅시다.
 
 }
