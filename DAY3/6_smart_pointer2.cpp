@@ -29,24 +29,29 @@ int main()
 	// 2개를 떨어뜨리지 말고, 같이 한번에 할당하는게 메모리가 효율적입니다.
 
 	// std::make_shared<T>(T의 생성자인자)
+
 	// 1. sizeof(T) + sizeof(관리객체) 를 operator new()로 한번에 할당
 	// 2. placement new로 객체 부분의 메모리에 생성자 호출
 	// 3. shared_ptr 만들어서 반환
 	
 	std::shared_ptr<Point> sp1 = std::make_shared<Point>(1, 2);
 	
+
+	// 장점 2. 안전성
+	// => 아래 코드는 아무 문제가 없을까요 ?
+
+	// 아래 코드는 foo() 호출전에 3가지 작업을 하게 됩니다.
+	//             (B)               (A)            (C)
+	foo( std::shared_ptr<Point>(new Point(1, 2)),  goo() );
+
+	// 위코드가
+	// (A)-(B)-(C) 순서로 실행되면 문제 없습니다.
+
+	// (A)-(C)-(B) 순서로 실행되었는데, (C) 에서 예외가 발생한 다면 ??
 }
 
 
-
-
-
-
-
-
-
-
-void foo(std::shared_ptr<int> sp, int n) {}
+void foo(std::shared_ptr<Point> sp, int n) {}
 
 int  goo() { return 10; }
 
