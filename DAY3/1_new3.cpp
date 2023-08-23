@@ -44,7 +44,11 @@ public:
 	}
 	~vector()
 	{
+		for (int i = 0; i < size; i++)
+			buff[i].~T();
 
+		operator delete(buff);
+		size = 0;
 	}
 };
 
