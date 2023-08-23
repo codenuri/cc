@@ -58,8 +58,10 @@ void foo()
 	std::lock_guard<std::mutex> g2(m, std::adopt_lock);
 
 }
-
-
+// QA. lock_guard 생성자에서 m이 lock 상태인지 
+// 아닌지 조사해서 알아서 처리해주도록 할수는 없나요?
+// => C++ 에서 std::recursive_mutex 같은 존재는 "2번 lock" 가능합니다.
+// => 따라서, 이미 lock 이 되어 있어도 다시 lock 할지/말지는 사용자 선택하게해야 합니다.
 
 
 
