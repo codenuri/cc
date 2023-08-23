@@ -20,6 +20,8 @@ public:
 //		buff = new T;	// 이렇게 하면 T 는 반드시 디폴트 생성자가 있어야 합니다
 		buff = static_cast<T*>(operator new(sizeof(T) * sz));
 
+		// cppreference.com 에서 "std::uninitialized_copy_n()" 찾아 보세요
+
 		int cnt = 0;
 		try
 		{
@@ -38,6 +40,7 @@ public:
 
 			operator delete(buff);
 			size = 0;
+			buff = nullptr;
 
 			throw; // 다시 예외 전달!
 		}
