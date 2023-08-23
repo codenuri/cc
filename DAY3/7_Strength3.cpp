@@ -19,10 +19,14 @@ public:
 
 int main()
 {
-	const String& ret3 = max1(String("AAA"),String("BBB"));
+//	const String& ret3 = max1(String("AAA"),String("BBB"));
+	const String& ret3 = std::max(String("AAA"), String("BBB"));
 
 	std::cout << "-------------" << std::endl;
+
 }
+
+// 권장 : 구글에서 "C++ lifetime herb sutter " 검색해서 나오는 PDF 읽어 보세요
 
 
 
