@@ -8,12 +8,25 @@ public:
 	Point(int a, int b) : x(a), y(b) {}
 
 	// 사용자가 복사 생성자를 만든다면, 모든 멤버를 얕은 복사해도, "trivial"이 아닙니다.
-	Point(const Point& pt) : x(pt.x), y(pt.y) {}
+//	Point(const Point& pt) : x(pt.x), y(pt.y) {}
 
+	// move 생성자를 만들면 컴파일러는 복사 생성자를 제공하지 않습니다.
+	// => 이때, 복사 생성자의 기본 동작이 필요 했다면
+	// => 절대 직접 만들지 말고, 컴파일러에게 요청하세요
+	Point(Point&& pt) {}
+//	Point(const Point& pt) : x(pt.x), y(pt.y) {}
+	Point(const Point& pt) = default;
 
-
-//	~Point() {}
+//	~Point() {}  // C++ 소멸자를 만든 경우, 자원 관리를 하는 클래스라고 생각합니다.
+				 // 그래서 복사 생성자도 trivial 하지 않다고 생각하게 됩니다.
+				 // 필요 없는 소멸자는 절때 만들지 마세요!!
+//	~Point() = default;
 };
+
+// vector 같은 객체를 복사 할때
+// memcpy 로 복사하는 것            : bit-wise copy 라고 합니다
+// 각 요소의 복사 생성자로 복사하는것 : member-wise copy
+
 
 
 
