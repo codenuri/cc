@@ -6,8 +6,16 @@ class Point
 	int y;
 public:
 	Point(int a, int b) : x(a), y(b) {}
-	~Point() {}
+
+	// 사용자가 복사 생성자를 만든다면, 모든 멤버를 얕은 복사해도, "trivial"이 아닙니다.
+	Point(const Point& pt) : x(pt.x), y(pt.y) {}
+
+
+
+//	~Point() {}
 };
+
+
 
 template<typename T> class vector
 {
@@ -80,9 +88,7 @@ public:
 				new(&buff[i]) T( other.buff[i] ); // 복사 생성자 호출
 			}
 		}
-
 	}
-
 };
 
 
