@@ -42,7 +42,7 @@ int main()
 
 	// 아래 코드는 foo() 호출전에 3가지 작업을 하게 됩니다.
 	//             (B)               (A)            (C)
-	foo( std::shared_ptr<Point>(new Point(1, 2)),  goo() );
+//	foo( std::shared_ptr<Point>(new Point(1, 2)),  goo() );
 
 	// 위코드가
 	// (A)-(B)-(C) 순서로 실행되면 문제 없습니다.
@@ -53,9 +53,11 @@ int main()
 	//	     반드시 한번에 이루어 져야 합니다.
 	//       중간에 다른 작업을 하게 되면 문제가 발생할수 있습니다.
 	// 
-	// 그래서, "자원의 할당의 자원 관리 객체를 만들때(RAII) 해야 합니다."
+	// 그래서, "자원의 할당의 자원 관리 객체(스마트포인터)를 만들때(RAII) 해야 합니다."
 
 	foo(std::make_shared<Point>(1,2), goo());
+
+	// std::make_shared<Point>(1,2) : 자원의 할당과 스마트포인터의 생성의 동시에!!
 }
 
 
