@@ -11,6 +11,7 @@
 // trivial : special member function 이 하는 일이 "자명(널리 알려진 디폴트 방식대로 동작)" 하다는 의미.
 // trivial 생성자      : 아무 일도 하지 않은 생성자
 // trivial 복사 생성자 : 모든 멤버를 얕은 복사하는 복사 생성자.
+// trivial 소멸자     : 아무일도 하지 않은 소멸자!
 
 class A
 {
